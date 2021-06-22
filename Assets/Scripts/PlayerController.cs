@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -11,9 +13,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask m_InputCollisionLayer;
 
+    [SerializeField]
+    private string m_NextLevel;
+
     private Animator m_AnimatorController;
 
     private bool m_HasKey = false;
+    [SerializeField]
+    private Image m_KeyUI;
 
     private Rigidbody m_Rigidbody;
 
@@ -47,8 +54,7 @@ public class PlayerController : MonoBehaviour
     private void KeyCollected()
     {
         m_HasKey = true;
-
-        //TODO: Put this outside of the PlayerController
+        m_KeyUI.color = Color.white;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,6 +75,8 @@ public class PlayerController : MonoBehaviour
             if(m_HasKey)
             {
                 Debug.Log("Opened the door");
+                m_HasKey = false;
+                m_KeyUI.color = Color.gray;
 
                 other.gameObject.GetComponent<Door>().Open();
 
@@ -84,6 +92,8 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody.transform.LookAt(m_MainCamera.transform.position, Vector3.up);
         m_Rigidbody.velocity = (m_MainCamera.transform.position - m_Rigidbody.transform.position).normalized  * m_MovementSpeed;
         m_AnimatorController.Play("Dino_Victory");
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene(m_NextLevel);
     }
 
     void Update()
