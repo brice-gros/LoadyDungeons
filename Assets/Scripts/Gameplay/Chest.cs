@@ -6,6 +6,8 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     private Animator m_Animator;
+    private AudioSource m_AudioSource;
+    
 
     [SerializeField]
     private ParticleSystem m_ParticleSystem;
@@ -23,29 +25,23 @@ public class Chest : MonoBehaviour
     void Start()
     {
         m_Animator = GetComponent<Animator>();
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     public void Open()
     {
-        // TODO: cache the string as a hash
-        m_Animator.SetTrigger("Open");
-
-        StartCoroutine(PlayParticles());
-
-        StartCoroutine(DestroyKey());
+        StartCoroutine(PlayOpen());
     }
 
-    private IEnumerator DestroyKey()
+    private IEnumerator PlayOpen()
     {
-        yield return new WaitForSeconds(m_KeyDestroyDelayTime);
+        m_AudioSource.Play();
+        m_Animator.SetTrigger("Open");
+        yield return new WaitForSeconds(m_ParticlePlayDelayTime);
+        m_ParticleSystem.Play();
 
+        yield return new WaitForSeconds(m_KeyDestroyDelayTime);
         m_Key.SetActive(false);
     }
 
-    private IEnumerator PlayParticles()
-    {
-        yield return new WaitForSeconds(m_ParticlePlayDelayTime);
-
-        m_ParticleSystem.Play();
-    }
 }
