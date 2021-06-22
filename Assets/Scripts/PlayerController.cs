@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Image m_KeyUI;
 
+    private Rigidbody m_Rigidbody;
+
     [SerializeField]
     private TMPro.TextMeshPro m_DebugText;
 
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        m_Rigidbody = GetComponent<Rigidbody>();
         m_AnimatorController = GetComponent<Animator>();
         m_MainCamera = Camera.main;
         
@@ -129,7 +132,7 @@ public class PlayerController : MonoBehaviour
         
         // apply animation
         if(m_AnimatorController != null)
-            m_AnimatorController.SetFloat(m_VelocityHash, m_Velocity.magnitude);
+            m_AnimatorController.SetFloat(m_VelocityHash, (m_Rigidbody.velocity + m_Velocity).magnitude);
 
         var cameraLookAtPos = transform.position + Vector3.up * 3.0F;
         var vecDiff = (cameraLookAtPos - m_MainCamera.transform.position);
@@ -160,9 +163,9 @@ public class PlayerController : MonoBehaviour
                 
                 // sadly, no visual debug replay tool, NavigationLab I miss you ❤
                 var debugDelay = 5;
-                Debug.DrawLine(transform.position, m_PhysHitInfo.point, Color.red, 5);
-                Debug.DrawRay(m_NavHitInfo.position, Vector3.up, Color.magenta, 5);
-                Debug.DrawRay(m_NavHitInfo.position, m_NavHitInfo.normal, Color.yellow, 5);
+                Debug.DrawLine(transform.position, m_PhysHitInfo.point, Color.red, debugDelay);
+                Debug.DrawRay(m_NavHitInfo.position, Vector3.up, Color.magenta, debugDelay);
+                Debug.DrawRay(m_NavHitInfo.position, m_NavHitInfo.normal, Color.yellow, debugDelay);
                 if (m_DebugText) {
                     // sadly no Debug.Text3d()
                     m_DebugText.text = $"{m_NavHitInfo.distance}";
