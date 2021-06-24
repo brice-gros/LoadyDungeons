@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bb0d52f7bb461438db651fdb1dd03f, type: 3}
+  m_Name: AI
+  m_EditorClassIdentifier: 
+  Root:
+    id: 0
+  m_Nodes:
+  - id: 1
+  - id: 2
+  - id: 3
+  - id: 0
+  - id: 4
+  m_Blackboard:
+    id: 5
+  RootNodePosition: {x: 558.6667, y: -29.333334}
+  m_SerializedPositions:
+  - {x: 224.00002, y: 410.66666}
+  - {x: 726, y: 290.66666}
+  - {x: 270.6667, y: 243.33333}
+  - {x: 435.33337, y: 158.66667}
+  - {x: 449.6667, y: 435.33334}
+  references:
+    version: 1
+    00000000:
+      type: {class: Sequence, ns: Unity.AI.Behaviours, asm: Unity.AI.Behaviours}
+      data:
+        m_Children:
+        - id: 3
+        - id: 2
+        m_CurrentChild: 0
+    00000001:
+      type: {class: Pickup, ns: , asm: Assembly-CSharp}
+      data:
+        m_Children: []
+        Chest: {fileID: 0}
+    00000002:
+      type: {class: Open, ns: , asm: Assembly-CSharp}
+      data:
+        m_Children: []
+        Door: {fileID: 0}
+    00000003:
+      type: {class: Random, ns: Unity.AI.Behaviours, asm: Unity.AI.Behaviours}
+      data:
+        m_Children:
+        - id: 1
+        - id: 4
+    00000004:
+      type: {class: Pickup, ns: , asm: Assembly-CSharp}
+      data:
+        m_Children: []
+        Chest: {fileID: 0}
+    00000005:
+      type: {class: Blackboard, ns: Unity.AI.Behaviours, asm: Unity.AI.Behaviours}
+      data:
+        m_Variables: []
+        m_Links: []

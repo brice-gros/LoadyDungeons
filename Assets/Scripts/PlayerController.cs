@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor;
+using Unity.AI.Behaviours;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -17,9 +17,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private string m_NextLevel;
 
+    private BTAgent m_BTAgent;
     private Animator m_AnimatorController;
 
-    private bool m_HasKey = false;
+    public bool m_HasKey = false;
     [SerializeField]
     private Image m_KeyUI;
 
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_AnimatorController = GetComponent<Animator>();
+        m_BTAgent = GetComponent<BTAgent>();
         m_MainCamera = Camera.main;
         
         // for screen to world raycast, sadly no NavMesh.Raycast3d()...

@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Unity Technologies
-  productName: Loady Dungeons
+  productName: Brice Dungeons
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -146,7 +146,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.UnityTechnologies.LoadyDungeons
+    Android: com.UnityTechnologies.BriceDungeons
     Standalone: com.UnityTechnologies.LoadyDungeons
   buildNumber:
     Standalone: 0
@@ -915,8 +915,14 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Analytics: 1
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
-    Unity Ads: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -930,10 +936,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: ceded976-9f8b-45f6-9555-266c5abf1251
+  cloudProjectId: 1a8ae6a4-9f48-4e75-afe1-470856e854df
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Loady Dungeons
+  projectName: Brice Dungeons
   organizationId: unity-evangelists
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
