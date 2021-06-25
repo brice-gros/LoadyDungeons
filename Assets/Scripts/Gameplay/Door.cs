@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    internal bool m_Opened = false;
     private Animator m_Animator;
     private AudioSource m_AudioSource;
 
@@ -14,7 +15,10 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
-        m_AudioSource.Play();
-        m_Animator.SetTrigger("Open");
+        if (m_Opened == false) {
+            m_Opened = true;
+            m_AudioSource.Play();
+            m_Animator.SetTrigger("Open");
+        }
     }
 }

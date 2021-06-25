@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class SceneMode
 {
-    public static bool auto = false;
+    internal static bool auto = true;
 }

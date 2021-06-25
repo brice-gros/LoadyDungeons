@@ -12,12 +12,8 @@ public class PlayerController : MonoBehaviour
     private float m_MovementSpeed = 5.0f;
 
     [SerializeField]
-    private LayerMask m_InputCollisionLayer;
-
-    [SerializeField]
     private string m_NextLevel;
 
-    private BTAgent m_BTAgent;
     private Animator m_AnimatorController;
     private PlayerConfigurator m_PlayerConfigurator;
 
@@ -44,6 +40,12 @@ public class PlayerController : MonoBehaviour
    
     const float k_MinMovementDistance = 1.2f;
 
+    private BTAgent m_BTAgent;
+    private Vector3 m_GoTo = Vector3.negativeInfinity;
+    private NavMeshPath m_NavMeshPath;
+    private int m_cornerIdx = 0;
+
+
     static Vector2 To2D(Vector3 v) { return new Vector2(v.x, v.z); }
     static Vector3 To3D(Vector2 v) { return new Vector3(v.x, 0f, v.y); }
     static float Cross(Vector2 a, Vector2 b) { return a.x * b.y - a.y * b.x; }
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour
         m_AnimatorController = GetComponent<Animator>();
         m_PlayerConfigurator = GetComponent<PlayerConfigurator>();
         m_BTAgent = GetComponent<BTAgent>();
+        m_NavMeshPath = new NavMeshPath();
         m_MainCamera = Camera.main;
     }
 
@@ -99,6 +102,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator LevelCompleted()
     {
+        m_NavMeshPath.ClearCorners();
         yield return new WaitForSeconds(2.15f);
         m_HasKey = false;
         m_KeyUI.color = Color.gray;
@@ -113,7 +117,7 @@ public class PlayerController : MonoBehaviour
         if (m_InitRatio < 1f) {
             m_InitRatio += Time.deltaTime / 0.7f;
             transform.position = Vector3.Lerp(m_startPoint+Vector3.up*5f, m_startPoint, m_InitRatio);
-        } else {
+        } else if (SceneMode.auto == false) {
             if (Input.GetMouseButton(0))
             {
                 MoveToPosition(Input.mousePosition);
@@ -145,6 +149,19 @@ public class PlayerController : MonoBehaviour
                 if (m_Velocity.sqrMagnitude < 0.005f) {
                     m_Velocity = Vector3.zero;
                 }
+            }
+        } else if (m_NavMeshPath.status != NavMeshPathStatus.PathInvalid) { // if (SceneMode.auto == true)
+            
+            var target = m_NavMeshPath.corners[m_cornerIdx];
+            // TODO check segment circle intersection instead
+            var moveToTarget = (target - transform.position);
+            transform.LookAt(target, Vector3.up);
+            if (To2D(moveToTarget).sqrMagnitude < 0.01f) {
+                m_cornerIdx = Mathf.Min(m_NavMeshPath.corners.Length -1, m_cornerIdx+1);
+            } else {
+                m_Velocity = moveToTarget.normalized * m_MovementSpeed;
+                transform.position += m_Velocity * Time.deltaTime;
+                
             }
         }
         
@@ -192,5 +209,29 @@ public class PlayerController : MonoBehaviour
         transform.LookAt(lookAt, Vector3.up);
         // apply calculated velocity
         m_Velocity = velocity;
+    }
+
+    public bool GoTo(Vector3 position) {
+        if (m_GoTo != position) {
+            var foundPath = NavMesh.CalculatePath(transform.position, position, NavMesh.AllAreas, m_NavMeshPath);
+            m_cornerIdx = 0;
+            if (!foundPath) {
+                m_GoTo = Vector3.negativeInfinity;
+            } else {
+                m_GoTo = position;
+            }
+            return foundPath;
+        }
+        return true;
+    }
+
+    public bool HasArrived() {
+        if (m_GoTo == Vector3.negativeInfinity) {
+            return true;
+        }
+        if (To2D(m_GoTo - transform.position).sqrMagnitude < 0.05f) {
+            return true;
+        }
+        return false;
     }
 }

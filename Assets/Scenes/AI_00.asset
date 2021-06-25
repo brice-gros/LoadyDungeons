@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9bb0d52f7bb461438db651fdb1dd03f, type: 3}
-  m_Name: AI
+  m_Name: AI_00
   m_EditorClassIdentifier: 
   Root:
     id: 0
@@ -24,11 +24,11 @@ MonoBehaviour:
     id: 5
   RootNodePosition: {x: 558.6667, y: -29.333334}
   m_SerializedPositions:
-  - {x: 224.00002, y: 410.66666}
-  - {x: 726, y: 290.66666}
+  - {x: 42, y: 429.3333}
+  - {x: 618, y: 285.3333}
   - {x: 270.6667, y: 243.33333}
   - {x: 435.33337, y: 158.66667}
-  - {x: 449.6667, y: 435.33334}
+  - {x: 484, y: 513.3334}
   references:
     version: 1
     00000000:
@@ -43,11 +43,13 @@ MonoBehaviour:
       data:
         m_Children: []
         Chest: {fileID: 0}
+        position: {x: 0, y: 0, z: 0}
     00000002:
       type: {class: Open, ns: , asm: Assembly-CSharp}
       data:
         m_Children: []
         Door: {fileID: 0}
+        position: {x: 0, y: 0, z: 0}
     00000003:
       type: {class: Random, ns: Unity.AI.Behaviours, asm: Unity.AI.Behaviours}
       data:
@@ -59,6 +61,7 @@ MonoBehaviour:
       data:
         m_Children: []
         Chest: {fileID: 0}
+        position: {x: 0, y: 0, z: 0}
     00000005:
       type: {class: Blackboard, ns: Unity.AI.Behaviours, asm: Unity.AI.Behaviours}
       data:

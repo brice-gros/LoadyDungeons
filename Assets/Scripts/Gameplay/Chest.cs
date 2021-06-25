@@ -7,7 +7,7 @@ public class Chest : MonoBehaviour
 {
     private Animator m_Animator;
     private AudioSource m_AudioSource;
-    private bool m_Opened = false;
+    internal bool m_Opened = false;
     
 
     [SerializeField]
