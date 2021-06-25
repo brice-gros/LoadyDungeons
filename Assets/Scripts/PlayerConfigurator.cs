@@ -11,7 +11,7 @@ public class PlayerConfigurator : MonoBehaviour
     void Start()
     {
         // TODO: Implement a m_GameManager.HatsUnlocked method on the GameManager script
-        SetHat(string.Format("Hat{0:00}", Random.Range(0,3)));
+        //SetHat(string.Format("Hat{0:00}", Random.Range(0,3)));
     }
     // TODO: Change the string parameter 
     public void SetHat(string hatKey)

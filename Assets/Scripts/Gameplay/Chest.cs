@@ -7,6 +7,7 @@ public class Chest : MonoBehaviour
 {
     private Animator m_Animator;
     private AudioSource m_AudioSource;
+    private bool m_Opened = false;
     
 
     [SerializeField]
@@ -17,6 +18,8 @@ public class Chest : MonoBehaviour
 
     [SerializeField]
     private GameObject m_Key;
+    
+    public string m_HatName;
 
     [SerializeField]
     private float m_KeyDestroyDelayTime = 0.75f;
@@ -28,20 +31,28 @@ public class Chest : MonoBehaviour
         m_AudioSource = GetComponent<AudioSource>();
     }
 
+    public bool HasKey() {
+        return m_Key != null;
+    }
+
     public void Open()
     {
-        StartCoroutine(PlayOpen());
+        if (m_Opened == false) {
+            m_Opened = true;
+            StartCoroutine(PlayOpen());
+        }
     }
 
     private IEnumerator PlayOpen()
     {
-        m_AudioSource.Play();
+        if (m_Key) m_Key.SetActive(true);
+        if (m_AudioSource) m_AudioSource.Play();
         m_Animator.SetTrigger("Open");
         yield return new WaitForSeconds(m_ParticlePlayDelayTime);
         m_ParticleSystem.Play();
 
         yield return new WaitForSeconds(m_KeyDestroyDelayTime);
-        m_Key.SetActive(false);
+        if (m_Key) m_Key.SetActive(false);
     }
 
 }

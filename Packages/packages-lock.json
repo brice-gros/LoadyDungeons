@@ -28,13 +28,12 @@
       "url": "https://artifactory.prd.cds.internal.unity3d.com/artifactory/api/npm/upm-candidates"
     },
     "com.unity.ai.behaviours": {
-      "version": "0.0.0",
+      "version": "file:D:/dev/com.unity.ai.behaviours/brice",
       "depth": 0,
-      "source": "registry",
+      "source": "local",
       "dependencies": {
         "com.unity.searcher": "4.7.0-preview"
-      },
-      "url": "https://artifactory.prd.cds.internal.unity3d.com/artifactory/api/npm/upm-candidates"
+      }
     },
     "com.unity.ai.navigation.components": {
       "version": "1.0.0-exp.1",

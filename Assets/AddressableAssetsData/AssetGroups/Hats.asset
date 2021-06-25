@@ -43,6 +43,48 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: f1abd29ebb90355468351baf4adcfa45
+    m_Address: Assets/Materials/Hats/Hat00Mat.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 976610aab62dade41b851b853a46a75e
+    m_Address: Assets/Materials/Hats/Hat01Mat.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 4b19b5a45bca813469543832c4bf3981
+    m_Address: Assets/Materials/Hats/Hat02Mat.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 043038634c6b3ce4ab992e4010756e2a
+    m_Address: Assets/Materials/Hats/Hats_Hat_AlbedoTransparency.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: b2567cfd9ab683c4cb87aa7a51062297
+    m_Address: Assets/Materials/Hats/Hats_Hat_Bunny_AlbedoTransparency.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: bbdb8474eb9764148bf97db77f9b18cc
+    m_Address: Assets/Materials/Hats/Hats_Hat_Crown_AlbedoTransparency.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 6f8fb8337d2fcda44b18c5cc3e9ad18f
+    m_Address: Assets/Materials/Hats/Hats_Hat_Pajama_AlbedoTransparency.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2ccbb3c7ea78abb4195a32c0e679e7a0, type: 2}
   m_SchemaSet:

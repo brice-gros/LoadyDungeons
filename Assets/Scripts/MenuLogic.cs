@@ -11,7 +11,7 @@ public class MenuLogic : MonoBehaviour
     {
         //Calls the TaskOnClick/TaskWithParameters/ButtonClicked method when you click the Button
         m_startButton.onClick.AddListener(StartClicked);
-        m_storeButton.onClick.AddListener(() => StoreClicked("https://assetstore.unity3d.com"));
+        m_storeButton.onClick.AddListener(() => StoreClicked(true));
     }
 
     void StartClicked()
@@ -19,10 +19,10 @@ public class MenuLogic : MonoBehaviour
         SceneManager.LoadScene("Level_00");
     }
 
-
-    void StoreClicked(string url)
+    void StoreClicked(bool auto)
     {
-        Debug.Log("Store clicked = " + url);
+        SceneMode.auto = auto;
+        SceneManager.LoadScene("Level_00");;
     }
 
 }
